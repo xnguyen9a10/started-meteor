@@ -27,7 +27,7 @@ class App extends Component {
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
-    if(text === "") {
+    if (text === "") {
       alert("You need to type something");
       return;
     }
@@ -42,13 +42,15 @@ class App extends Component {
 
   renderTasks() {
     let filteredTasks = this.props.tasks;
+
     if (this.state.hideCompleted) {
       filteredTasks = filteredTasks.filter(task => !task.checked);
     }
+
     return filteredTasks.map((task) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
       const showPrivateButton = task.owner === currentUserId;
-      console.log(currentUserId)
+
       return (
         <Task
           key={task._id}
@@ -58,7 +60,7 @@ class App extends Component {
       );
     });
   }
- 
+
   render() {
     return (
       <div className="container">
