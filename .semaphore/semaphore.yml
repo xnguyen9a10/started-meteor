@@ -18,7 +18,7 @@ blocks:
             - checkout
             - cache restore
             - 'curl https://install.meteor.com/ | sh'
-            - cache store
+            - install-package --update-new meteor
     dependencies: []
   - name: Test
     dependencies:
