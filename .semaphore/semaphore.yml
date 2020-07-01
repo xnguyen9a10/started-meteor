@@ -15,10 +15,8 @@ blocks:
             - cache restore
             - npm install
             - cache store
-            - checkout
-            - cache restore
             - 'curl https://install.meteor.com/'
-            - cache store our-gems ./meteor
+            - cache store our-gems .meteor
             - ls
     dependencies: []
   - name: Test
