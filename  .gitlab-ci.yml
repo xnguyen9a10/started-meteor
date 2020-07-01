@@ -1,4 +1,5 @@
 image: node:4.2.2
+image: meteorhacks/meteord:onbuild
 
 before_script:
   # - apt-get update -y
