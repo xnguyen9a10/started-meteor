@@ -10,8 +10,6 @@ build:
   type: build
   script:
   - pwd 
-  - cd '.deploy'
-  - metero build
   # - meteor build /home/gitlab-runner/erecaho-build/server-alpha-running --directory --server=http://example.org:3000 --verbose
   only:
   - master
@@ -34,7 +32,7 @@ deploy:
   - echo "deploying ----"
   # - cd /home/gitlab-runner/erecaho-build/server-alpha-running/bundle/programs/server/ && /home/gitlab-runner/.meteor/packages/meteor-tool/1.1.10/mt-os.linux.x86_64/dev_bundle/bin/npm install
   - cd .deploy
-  - sudo mup seup
+  - sudo mup setup
   - sudo mup deploy
   only:
   - master
