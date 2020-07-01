@@ -28,6 +28,7 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
+            - cache restore our-gems
             - npm run test
       prologue:
         commands:
