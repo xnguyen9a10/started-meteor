@@ -1,6 +1,6 @@
 before_script:
   - echo "======================================"
-  - echo "==== START auto full script v0.1 ====="
+  - echo "==== START auto full script v01.1 ====="
   - echo "======================================"
 
 types:
