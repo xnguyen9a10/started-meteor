@@ -1,5 +1,7 @@
 image: node:4.2.2
-image: christiankiely/meteord:test
+image: blurri/meteor-node
+variables:
+    METEOR_ALLOW_SUPERUSER: "true"
 
 before_script:
   # - apt-get update -y
