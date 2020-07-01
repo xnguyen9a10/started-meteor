@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 export default class TaskOutside extends Component {
   render() {
     return (
-      <li>{this.props.task.text}xx</li>
+      <li>{this.props.task.text}</li>
     );
   }
 }
