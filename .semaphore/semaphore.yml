@@ -49,8 +49,3 @@ blocks:
             - cd .deploy
             - mup setup
             - mup deploy
-  - name: 'Block #4'
-    dependencies:
-      - Deploy
-    task:
-      jobs: []
