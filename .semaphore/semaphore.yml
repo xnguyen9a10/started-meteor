@@ -5,21 +5,20 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Build
+  - name: Install
+    dependencies: []
     task:
       jobs:
-        - name: 'Eslint, install, ...'
+        - name: Setup
           commands:
             - npm install
             - npm install --global mup
-            - npm run test
-    dependencies: []
+            - 'curl https://install.meteor.com/ | sh'
   - name: Test
     dependencies:
-      - Build
+      - Install
     task:
       jobs:
-        - name: Run unit test
+        - name: Test
           commands:
-            - ls
             - npm run test
