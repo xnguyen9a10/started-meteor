@@ -4,6 +4,10 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
+  dependencies: null
+  cache_directories:
+    - ~/.npm
+    - ~/.meteor
 blocks:
   - name: Build
     task:
@@ -27,7 +31,6 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
-            - 'curl https://install.meteor.com/ | sh'
             - npm run test
       prologue:
         commands:
