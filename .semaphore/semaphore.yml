@@ -4,10 +4,6 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-  dependencies: null
-  cache_directories:
-    - ~/.npm
-    - ~/.meteor
 blocks:
   - name: Build
     task:
