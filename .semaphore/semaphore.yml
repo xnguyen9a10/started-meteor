@@ -16,7 +16,7 @@ blocks:
             - npm install
             - cache store
             - 'curl https://install.meteor.com/'
-            - cache store our-gems .meteor
+            - cache store meteor .meteor
             - ls
     dependencies: []
   - name: Test
