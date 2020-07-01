@@ -31,7 +31,7 @@ job_test:
   type: test
   script:
   - echo "testing ----"
-  - npm run test
+  - meteor test --once --driver-package meteortesting:mocha
   only:
   - master
   tags:
