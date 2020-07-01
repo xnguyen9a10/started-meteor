@@ -33,7 +33,7 @@ job_test:
   type: test
   script:
   - echo "testing ----"
-  - meteor test --once --driver-package meteortesting:mocha
+  - meteor test --once --allow-superuser --driver-package meteortesting:mocha
   only:
   - master
   tags:
