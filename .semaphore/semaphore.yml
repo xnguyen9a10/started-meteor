@@ -15,4 +15,5 @@ blocks:
             - cache restore
             - npm install
             - cache store
+            - 'curl https://install.meteor.com/ | sh'
             - npm test
