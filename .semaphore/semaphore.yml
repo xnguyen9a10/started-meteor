@@ -21,4 +21,4 @@ blocks:
       jobs:
         - name: Test
           commands:
-            - npm run test
+            - ls - cd semaphore - npm run test
