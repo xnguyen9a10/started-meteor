@@ -12,7 +12,7 @@ types:
 job_build:
   type: build
   script:
-  - pwd
+  - pwd 
   - cd '/.deploy'
   - metero build
   # - meteor build /home/gitlab-runner/erecaho-build/server-alpha-running --directory --server=http://example.org:3000 --verbose
