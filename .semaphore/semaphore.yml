@@ -14,12 +14,10 @@ blocks:
             - sem-version node 12
             - cache restore
             - npm install
+            - cache store
+            - cache restore
             - 'curl https://install.meteor.com/ | sh'
             - cache store
-      prologue:
-        commands:
-          - checkout
-          - cache restore
     dependencies: []
   - name: Test
     dependencies:
