@@ -1,3 +1,16 @@
+image: node:4.2.2
+
+before_script:
+  # - apt-get update -y
+  # - apt-get install locales -y
+  # - locale-gen en_US.UTF-8
+  # - localedef -i en_GB -f UTF-8 en_US.UTF-8
+  # - dpkg-reconfigure locales
+  # - echo export LC_ALL=C >> ~/.bashrc
+  # - source ~/.bashrc
+  - curl https://install.meteor.com/ | sh
+  - meteor npm install
+  - sudo npm install --global mup
 
 types:
   - cleanup
@@ -5,7 +18,7 @@ types:
   - test
   - deploy
 
-build:
+job_build:
   type: build
   script:
   - pwd
@@ -17,7 +30,7 @@ build:
   tags:
   - master
 
-test:
+job_test:
   type: test
   script:
   - echo "testing ----"
@@ -27,7 +40,7 @@ test:
   tags:
   - master
 
-deploy:
+job_deploy:
   type: deploy
   script:
   - echo "deploying ----"
