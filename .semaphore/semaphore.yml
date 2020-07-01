@@ -14,8 +14,8 @@ blocks:
             - sem-version node 12
             - cache restore
             - npm install
-            - cache store
             - 'curl https://install.meteor.com/ | sh'
+            - cache store
       prologue:
         commands:
           - checkout
