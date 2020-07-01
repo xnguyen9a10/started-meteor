@@ -5,7 +5,7 @@ types:
   - test
   - deploy
 
-job_build:
+build:
   type: build
   script:
   - pwd
@@ -17,7 +17,7 @@ job_build:
   tags:
   - master
 
-job_test:
+test:
   type: test
   script:
   - echo "testing ----"
@@ -27,7 +27,7 @@ job_test:
   tags:
   - master
 
-job_deploy:
+deploy:
   type: deploy
   script:
   - echo "deploying ----"
