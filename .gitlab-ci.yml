@@ -10,7 +10,7 @@ before_script:
   # - echo export LC_ALL=C >> ~/.bashrc
   # - source ~/.bashrc
   - meteor npm install
-  - sudo npm install --global mup
+  - npm install --global mup
 
 types:
   - cleanup
@@ -43,8 +43,8 @@ job_deploy:
   - echo "deploying ----"
   # - cd /home/gitlab-runner/erecaho-build/server-alpha-running/bundle/programs/server/ && /home/gitlab-runner/.meteor/packages/meteor-tool/1.1.10/mt-os.linux.x86_64/dev_bundle/bin/npm install
   - cd /.deploy
-  - sudo mup setup
-  - sudo mup deploy
+  - mup setup
+  - mup deploy
   only:
   - master
   tags:
