@@ -42,7 +42,7 @@ job_test:
 job_deploy:
   type: deploy
   script:
-  - echo "deploying ----"
+  - echo "deployig ----"
   # - cd /home/gitlab-runner/erecaho-build/server-alpha-running/bundle/programs/server/ && /home/gitlab-runner/.meteor/packages/meteor-tool/1.1.10/mt-os.linux.x86_64/dev_bundle/bin/npm install
   - cd /.deploy
   - mup setup
