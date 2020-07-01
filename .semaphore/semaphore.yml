@@ -24,4 +24,5 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
+            - ls
             - npm run test
