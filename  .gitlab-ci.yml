@@ -8,7 +8,6 @@ before_script:
   # - dpkg-reconfigure locales
   # - echo export LC_ALL=C >> ~/.bashrc
   # - source ~/.bashrc
-  - curl https://install.meteor.com/ | sh
   - meteor npm install
   - sudo npm install --global mup
 
