@@ -27,6 +27,7 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
+            - 'curl https://install.meteor.com/ | sh'
             - npm run test
       prologue:
         commands:
