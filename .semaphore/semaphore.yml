@@ -24,28 +24,4 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
-            - checkout
-            - sem-version node 12
-            - cache restore
-            - npm install
-            - cache store
-            - 'curl https://install.meteor.com/ | sh'
-            - npm install --global mup
-  - name: Deploy
-    dependencies:
-      - Test
-    task:
-      jobs:
-        - name: Using mup to deploy
-          commands:
-            - checkout
-            - sem-version node 12
-            - cache restore
-            - npm install
-            - cache store
-            - 'curl https://install.meteor.com/ | sh'
-            - npm install --global mup
             - npm run test
-            - cd .deploy
-            - mup setup
-            - mup deploy
