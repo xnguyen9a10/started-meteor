@@ -5,23 +5,41 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Install
-    dependencies: []
+  - name: Build
     task:
       jobs:
-        - name: Setup
+        - name: 'Eslint, install, ...'
           commands:
+            - checkout
+            - sem-version node 12
+            - cache restore
             - npm install
-            - ls
-            - npm install --global mup
+            - cache store
             - 'curl https://install.meteor.com/ | sh'
+    dependencies: []
   - name: Test
     dependencies:
-      - Install
+      - Build
     task:
       jobs:
-        - name: Test
+        - name: Run unit test
           commands:
-            - ls
-            - cd semaphore
             - npm run test
+  - name: Deploy
+    dependencies:
+      - Test
+    task:
+      jobs:
+        - name: Using mup to deploy
+          commands:
+            - checkout
+            - sem-version node 12
+            - cache restore
+            - npm install
+            - cache store
+            - 'curl https://install.meteor.com/ | sh'
+            - npm install --global mup
+            - npm run test
+            - cd .deploy
+            - mup setup
+            - mup deploy
