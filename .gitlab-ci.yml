@@ -1,5 +1,5 @@
 image: node:4.2.2
-image: jshimko/meteor-launchpad:latest
+image: christiankiely/meteord:test
 
 before_script:
   # - apt-get update -y
