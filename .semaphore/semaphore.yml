@@ -12,6 +12,7 @@ blocks:
         - name: Setup
           commands:
             - npm install
+            - ls
             - npm install --global mup
             - 'curl https://install.meteor.com/ | sh'
   - name: Test
@@ -21,4 +22,6 @@ blocks:
       jobs:
         - name: Test
           commands:
-            - ls - cd semaphore - npm run test
+            - ls
+            - cd semaphore
+            - npm run test
