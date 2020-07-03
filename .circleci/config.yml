@@ -10,21 +10,7 @@ jobs:
           name: "install Meteor"
           command: |  
             curl https://install.meteor.com | /sh
-      # - save_cache:
-      #     key: v1-meteor-cache
-      #     path:
-      #       - ~/.meteor            
       - run:
           name: "install npm package"
           command: |
             npm install
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          path:
-            - node_modules
-      # - run:
-      #     name: "test"
-      #     command: |
-      #       npm run test
