@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/simple-todos
     docker:
-      - image: node:latest
+      - image: node:12.16.3
     environment:
       METEOR_ALLOW_SUPERUSER: true  
     steps:
