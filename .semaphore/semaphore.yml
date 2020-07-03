@@ -16,7 +16,7 @@ blocks:
             - npm install
             - cache store
             - 'curl https://install.meteor.com/'
-            - cache store meteor /usr/local/bin/meteor
+            - cache store meteor ~/usr/local/bin/meteor
             - ls
     dependencies: []
   - name: Test
