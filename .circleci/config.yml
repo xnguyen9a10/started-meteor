@@ -25,7 +25,6 @@ jobs:
           key: v1-meteor-cache
           paths:
             - /.meteor/
-            - /usr/local/bin/meteor            
       - run:
           name: "install npm package"
           command: |
@@ -65,7 +64,7 @@ jobs:
       - run:
           name: "deploy"
           command: |
-            npm install --global mup  
+            npm install mup  
             cd .deploy
             mup setup
             mup deploy 
