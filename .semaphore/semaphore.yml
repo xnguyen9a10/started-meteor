@@ -10,13 +10,14 @@ blocks:
       jobs:
         - name: 'Eslint, install, ...'
           commands:
+            - cache clear
             - checkout
             - sem-version node 12
             - cache restore
             - npm install
             - cache store
             - 'curl https://install.meteor.com/'
-            - cache store meteor-gem ~/../../usr/local/bin/
+            - cache store meteor-gem2 ~/../../usr/local/bin/
             - ls
     dependencies: []
   - name: Test
@@ -26,7 +27,7 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
-            - cache restore meteor-gem
+            - cache restore meteor-gem2
             - npm run test
       prologue:
         commands:
