@@ -28,6 +28,7 @@ blocks:
         - name: Run unit test
           commands:
             - cache restore meteor-gem2
+            - 'curl https://install.meteor.com/'
             - npm run test
       prologue:
         commands:
@@ -40,7 +41,7 @@ blocks:
       jobs:
         - name: Using mup to deploy
           commands:
+            - cache restore meteor-gem2
+            - 'curl https://install.meteor.com/'
             - npm install --global mup
-            - cd .deploy
-            - mup setup
-            - mup deploy
+            - npm run test
