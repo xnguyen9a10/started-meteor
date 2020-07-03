@@ -2,7 +2,7 @@ version: 2.1
 jobs: 
   build-test:
     docker:
-      - image: node:12.16.3
+      - image: circleci/node:12.16.3
     working_directory: ~/simple-todos
     environment:
       METEOR_ALLOW_SUPERUSER: true  
@@ -12,10 +12,21 @@ jobs:
           name: "install Meteor"
           command: |  
             curl https://install.meteor.com | sh
+      - run:
+          name: copy meteor bin to build cache
+          command: |
+            mkdir -p ~/build-temp
+            cp /usr/local/bin/meteor ~/build-temp/meteor-bin
+      - save_cache:
+          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - ~/build-temp      
       - save_cache:
           key: v1-meteor-cache
           paths:
             - /.meteor/            
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}      
       - run:
           name: "install npm package"
           command: |
@@ -37,13 +48,15 @@ jobs:
           command: |
             npm run test
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: circleci/node:12.16.3
     working_directory: ~/simple-todos
     environment:
       METEOR_ALLOW_SUPERUSER: true
     steps:
       - checkout
+      - restore_cache:
+          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
       - run:
           name: "deploy"
           command: |
