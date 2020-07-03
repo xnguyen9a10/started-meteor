@@ -1,6 +1,7 @@
 version: 2.1
 jobs: 
   build:
+    working_directory: ~/simple-todos
     docker:
       - image: node:latest
     steps:
@@ -22,7 +23,7 @@ jobs:
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           path:
-            - node_modules     
+            - node_modules
       # - run:
       #     name: "test"
       #     command: |
