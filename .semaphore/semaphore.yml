@@ -43,6 +43,7 @@ blocks:
           commands:
             - 'curl https://install.meteor.com/ | sh'
             - npm install --global mup
+            - ls -a
             - cd .deploy
             - mup setup
             - mup deploy
