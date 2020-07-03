@@ -13,7 +13,7 @@ jobs:
           command: |  
             curl https://install.meteor.com | sh
       - save_cache:
-          key: v1-meteor-cache
+          key: v1-meteor-cache2
           paths:
             - /.meteor/            
       - run:
