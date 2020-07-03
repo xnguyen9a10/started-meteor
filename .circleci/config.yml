@@ -9,19 +9,19 @@ jobs:
           name: "install Meteor"
           command: |  
             curl https://install.meteor.com | /sh
-      - save_cache:
-          key: v1-meteor-cache
-          path:
-            - ~/.meteor            
-      # - run:
-      #     name: "install npm package"
-      #     command: |
-      #       npm install
       # - save_cache:
-      #     key: v1-npm-package-cache
+      #     key: v1-meteor-cache
       #     path:
-      #       - ~/.node_modules/
-      #       - ~/.npm/     
+      #       - ~/.meteor            
+      - run:
+          name: "install npm package"
+          command: |
+            npm install
+      - save_cache:
+          key: v1-npm-package-cache
+          path:
+            - ~/.node_modules/
+            - ~/.npm/     
       # - run:
       #     name: "test"
       #     command: |
