@@ -37,8 +37,8 @@ jobs:
           command: |
             npm run test
   deploy:
-    docker:
-      - image: node:12.16.3
+    machine:
+      enabled: true
     working_directory: ~/simple-todos
     environment:
       METEOR_ALLOW_SUPERUSER: true
