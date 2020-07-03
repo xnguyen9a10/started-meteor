@@ -13,7 +13,7 @@ jobs:
       - save_cache:
           key: v1-meteor-cache
           path:
-            - ~/.meteor/            
+            - /.meteor/            
       - run:
           name: "install npm package"
           command: |
