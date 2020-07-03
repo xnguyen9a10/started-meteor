@@ -14,9 +14,7 @@ jobs:
           name: "install npm package"
           command: |
             npm install
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          path:
-            - node_modules    
+      - run:
+          name: "listing"
+          command: |
+            ls -a  
