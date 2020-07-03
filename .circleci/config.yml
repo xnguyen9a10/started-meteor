@@ -57,9 +57,9 @@ jobs:
       - restore_cache:
           key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
       - run:
-        name: "runcp"
-        command: |
-          cp ~/build-temp/meteor-bin /usr/local/bin/meteor    
+          name: "runcp"
+          command: |
+            cp ~/build-temp/meteor-bin /usr/local/bin/meteor    
       - restore_cache:
           key: another    
       - run:
