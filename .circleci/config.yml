@@ -17,8 +17,10 @@ jobs:
           name: "install npm package"
           command: |
             npm install
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - save_cache:
-          key: v1-npm-package-cache
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           path:
             - node_modules     
       # - run:
