@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/simple-todos
     docker:
       - image: node:latest
+    environment:
+      METEOR_ALLOW_SUPERUSER: true  
     steps:
       - checkout
       - run:
