@@ -27,7 +27,7 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
-            - cache restore meteor-gem2345 ~/../../usr/local/bin/
+            - cache restore meteor-gem2345
             - npm run test
       prologue:
         commands:
