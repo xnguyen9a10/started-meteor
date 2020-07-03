@@ -41,7 +41,9 @@ blocks:
       jobs:
         - name: Using mup to deploy
           commands:
-            - cache restore meteor-gem2
+            - cache restore
             - 'curl https://install.meteor.com/'
             - npm install --global mup
-            - npm run test
+            - cd .deploy
+            - mup setup
+            - mup deploy
