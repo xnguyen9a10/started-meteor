@@ -3,7 +3,7 @@ jobs:
   build-test:
     working_directory: ~/simple-todos
     docker:
-      - image: node:12.16.3
+      - image: jshimko/meteor-launchpad:latest
     environment:
       METEOR_ALLOW_SUPERUSER: true  
     steps:
@@ -40,7 +40,7 @@ jobs:
   deploy:
     working_directory: ~/simple-todos
     docker:
-      - image: node:12.16.3
+      - image: jshimko/meteor-launchpad:latest
     environment:
       METEOR_ALLOW_SUPERUSER: true
     steps:
