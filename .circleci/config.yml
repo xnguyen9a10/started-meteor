@@ -60,11 +60,19 @@ jobs:
           command: |
             cp ~/build-temp/meteor-bin /usr/local/bin/meteor    
       - restore_cache:
-          key: another    
+          key: another
+      - restore_cache:
+          key: mup_cache
+      - run:
+          name: "install mup"
+          command: |
+            npm install --global mup
+      - save_cache:
+          key: mup_cache
+          path: /use/local/bin/mup        
       - run:
           name: "deploy"
           command: |
-            npm install mup  
             cd .deploy
             mup setup
             mup deploy 
