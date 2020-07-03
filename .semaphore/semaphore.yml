@@ -17,7 +17,7 @@ blocks:
             - npm install
             - cache store
             - 'curl https://install.meteor.com/ | sh'
-            - cache store meteor-gem234 ~/../../usr/local/bin
+            - cache store meteor-gem2345 ~/../../usr/local/bin
             - ls
     dependencies: []
   - name: Test
@@ -27,7 +27,7 @@ blocks:
       jobs:
         - name: Run unit test
           commands:
-            - cache store meteor-gem234 ~/../../usr/local/bin/
+            - cache store meteor-gem2345 ~/../../usr/local/bin/
             - npm run test
       prologue:
         commands:
