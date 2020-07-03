@@ -55,10 +55,11 @@ jobs:
       - checkout
       - restore_cache:
           key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
+      - restore_cache:
+          key: another    
       - run:
           name: "deploy"
           command: |
-            curl https://install.meteor.com | sh
             npm install --global mup  
             cd .deploy
             mup setup
