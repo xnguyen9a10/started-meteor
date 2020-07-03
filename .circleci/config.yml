@@ -45,13 +45,13 @@ jobs:
       METEOR_ALLOW_SUPERUSER: true
     steps:
       - checkout
-    run:
-      name: "deploy"
-      command: |
-        npm install --global mup  
-        cd .deploy
-        mup setup
-        mup deploy 
+      - run:
+          name: "deploy"
+          command: |
+            npm install --global mup  
+            cd .deploy
+            mup setup
+            mup deploy 
 workflows:
   version: 2.1
   build-test-deploy:
