@@ -1,5 +1,17 @@
 version: 2.1
 jobs: 
+  eslint:
+    docker:
+      - image: node:12.16.3
+    working_directory: ~/simple-todos
+    steps:
+      - checkout
+      - run:
+          name: "eslint"
+          command: |
+            npm install eslint \
+            eslint-config-airbnb \
+            node_modules/eslint/bin/eslint.js
   build-test:
     docker:
       - image: node:12.16.3
@@ -37,8 +49,8 @@ jobs:
           command: |
             npm run test
   deploy:
-    docker:
-      - image: node:12.16.3
+    machine:
+      enabled: true
     working_directory: ~/simple-todos
     environment:
       METEOR_ALLOW_SUPERUSER: true
@@ -56,7 +68,10 @@ workflows:
   version: 2.1
   build-test-deploy:
     jobs:
-      - build-test
+      - eslint:
+      - build-test:
+          requires:
+            - eslint
       - deploy:
           requires:
             - build-test
