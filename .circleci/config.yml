@@ -1,8 +1,8 @@
 version: 2.1
 jobs: 
   build-test:
-    machine:
-      enabled: true
+    docker:
+      - image: node:12.16.3
     working_directory: ~/simple-todos
     environment:
       METEOR_ALLOW_SUPERUSER: true  
@@ -37,8 +37,8 @@ jobs:
           command: |
             npm run test
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: node:12.16.3
     working_directory: ~/simple-todos
     environment:
       METEOR_ALLOW_SUPERUSER: true
@@ -56,7 +56,7 @@ workflows:
   version: 2.1
   build-test-deploy:
     jobs:
-      - build-test:
+      - build-test
       - deploy:
           requires:
             - build-test
