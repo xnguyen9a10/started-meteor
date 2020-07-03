@@ -18,6 +18,7 @@ jobs:
           name: "install npm package"
           command: |
             npm install
+            npm install --global mup   
       - run:
           name: "listing"
           command: |
@@ -34,3 +35,9 @@ jobs:
           name: "test"
           command: |
             npm run test
+      - run:
+          name: "deploy"
+          command: |
+            cd .deploy
+            mup setup
+            mup deploy
