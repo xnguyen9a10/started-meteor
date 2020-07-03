@@ -41,6 +41,8 @@ blocks:
       jobs:
         - name: Using mup to deploy
           commands:
+            - checkout
+            - cache restore
             - 'curl https://install.meteor.com/ | sh'
             - npm install --global mup
             - ls -a
