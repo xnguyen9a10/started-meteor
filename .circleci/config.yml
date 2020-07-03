@@ -7,7 +7,7 @@ jobs:
     environment:
       METEOR_ALLOW_SUPERUSER: true  
     steps:
-      - checkoutsh
+      - checkout
       - save_cache:
           key: v1-meteor-cache2
           paths:
