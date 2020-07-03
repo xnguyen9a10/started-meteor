@@ -24,7 +24,8 @@ jobs:
       - save_cache:
           key: v1-meteor-cache
           paths:
-            - /.meteor/            
+            - /.meteor/
+            - /usr/local/bin/meteor            
       - run:
           name: "install npm package"
           command: |
@@ -55,6 +56,8 @@ jobs:
       - checkout
       - restore_cache:
           key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
+      - run:
+          cp ~/build-temp/meteor-bin /usr/local/bin/meteor    
       - restore_cache:
           key: another    
       - run:
