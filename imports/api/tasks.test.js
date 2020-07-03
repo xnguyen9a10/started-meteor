@@ -32,7 +32,7 @@ if (Meteor.isServer) {
 				deleteTask.apply(invocation, [taskId]);
 
 				// Verify that the method does what we expected
-				assert.equal(Tasks.find().count(), 1);
+				assert.equal(Tasks.find().count(), 0);
 			});
 		});
 	})
