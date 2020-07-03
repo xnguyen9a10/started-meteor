@@ -69,7 +69,8 @@ jobs:
             npm install --global mup
       - save_cache:
           key: mup_cache
-          path: /use/local/bin/mup        
+          path: 
+            - /use/local/bin/mup        
       - run:
           name: "deploy"
           command: |
