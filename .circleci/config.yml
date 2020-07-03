@@ -12,7 +12,7 @@ jobs:
             curl https://install.meteor.com | /sh
       - save_cache:
           key: v1-meteor-cache
-          path:
+          paths:
             - /.meteor/            
       - run:
           name: "install npm package"
