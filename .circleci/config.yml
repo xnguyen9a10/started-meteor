@@ -17,4 +17,6 @@ jobs:
       - run:
           name: "listing"
           command: |
-            ls -a  
+            ls -a
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }} 
