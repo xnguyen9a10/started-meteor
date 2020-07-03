@@ -28,6 +28,8 @@ blocks:
         - name: Run unit test
           commands:
             - cache restore meteor-gem2345
+            - 'cp /home/semaphore/../../usr/local/bin /home/semaphore/../../usr/local/bin '
+            - 'ls /home/semaphore/../../usr/local/bin   '
             - npm run test
       prologue:
         commands:
