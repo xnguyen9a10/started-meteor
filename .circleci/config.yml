@@ -18,5 +18,7 @@ jobs:
           name: "listing"
           command: |
             ls -a
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }} 
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          path:
+            - ./node_modules
