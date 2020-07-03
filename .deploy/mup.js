@@ -21,6 +21,7 @@ module.exports = {
 
     buildOptions: {
       serverOnly: true,
+      executable: 'meteor --allow-superuser',
     },
 
     env: {

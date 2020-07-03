@@ -4,7 +4,6 @@ jobs:
     working_directory: ~/simple-todos
     docker:
       - image: node:latest
-        user: node
     steps:
       - checkout
       - run:
