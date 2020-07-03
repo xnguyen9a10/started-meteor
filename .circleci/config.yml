@@ -3,7 +3,7 @@ jobs:
   build-test:
     working_directory: ~/simple-todos
     docker:
-      - image: jshimko/meteor-launchpad:latest
+      - image: meteor/circleci
     environment:
       METEOR_ALLOW_SUPERUSER: true  
     steps:
