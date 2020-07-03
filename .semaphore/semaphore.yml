@@ -28,7 +28,7 @@ blocks:
         - name: Run unit test
           commands:
             - cache restore meteor-gem2
-            - 'curl https://install.meteor.com/'
+            - 'curl https://install.meteor.com/ | sh'
             - npm run test
       prologue:
         commands:
