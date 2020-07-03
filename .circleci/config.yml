@@ -45,6 +45,10 @@ jobs:
       METEOR_ALLOW_SUPERUSER: true
     steps:
       - checkout
+      - restore_cache:
+          key: another
+      - restore_cache:
+          key: v1-meteor-cache 
       - run:
           name: "deploy"
           command: |
