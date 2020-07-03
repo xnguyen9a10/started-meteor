@@ -19,6 +19,6 @@ jobs:
           command: |
             ls -a
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          path:
-            - ./node_modules
+          key: npm-packages-{{ checksum "package.json" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - ./node_modules/
