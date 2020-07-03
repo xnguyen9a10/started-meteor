@@ -1,16 +1,5 @@
 version: 2.1
 jobs: 
-  eslint:
-    docker:
-      - image: node:12.16.3
-    working_directory: ~/simple-todos
-    steps:
-      - checkout
-      - run:
-          name: "eslint"
-          command: |
-            npm install eslint-config-airbnb
-            node_modules/eslint/bin/eslint.js
   build-test:
     machine:
       enabled: true
@@ -67,10 +56,7 @@ workflows:
   version: 2.1
   build-test-deploy:
     jobs:
-      - eslint:
       - build-test:
-          requires:
-            - eslint
       - deploy:
           requires:
             - build-test
