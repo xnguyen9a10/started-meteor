@@ -19,6 +19,6 @@ jobs:
           command: |
             ls -a
       - save_cache:
-          key: npm-packages-{{ checksum "package.json" }}-{{ checksum ".circleci/config.yml" }}
+          key: another
           paths:
             - ./node_modules/
