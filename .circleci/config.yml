@@ -3,19 +3,24 @@ jobs:
   build-test:
     working_directory: ~/simple-todos
     docker:
-      - image: meteor/circleci
+      - image: jshimko/meteor-launchpad:latest
     environment:
       METEOR_ALLOW_SUPERUSER: true  
     steps:
       - checkout
+      - run:
+          name: "install Meteor"
+          command: |  
+            curl https://install.meteor.com | sh
       - save_cache:
-          key: v1-meteor-cache2
+          key: v1-meteor-cache
           paths:
             - /.meteor/            
       - run:
           name: "install npm package"
           command: |
-            meteor npm install
+            npm install
+            npm install --global mup   
       - run:
           name: "listing"
           command: |
@@ -35,7 +40,7 @@ jobs:
   deploy:
     working_directory: ~/simple-todos
     docker:
-      - image: jshimko/meteor-launchpad:latest
+      - image: node:12.16.3
     environment:
       METEOR_ALLOW_SUPERUSER: true
     steps:
