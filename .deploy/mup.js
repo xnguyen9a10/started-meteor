@@ -4,7 +4,7 @@ module.exports = {
       // TODO: set host address, username, and authentication method
       host: '178.128.81.113',
       username: 'root',
-      pem: '/home//nguyen/.ssh/id_rsa'
+      pem: './id_rsa'
       // password: 'server-password'
       // or neither for authenticate from ssh-agent
     }
@@ -21,6 +21,7 @@ module.exports = {
 
     buildOptions: {
       serverOnly: true,
+      executable: 'meteor',
     },
 
     env: {

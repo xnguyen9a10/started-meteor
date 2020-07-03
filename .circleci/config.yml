@@ -1,0 +1,87 @@
+version: 2.1
+jobs: 
+  build-test:
+    docker:
+      - image: node:12.16.3
+    working_directory: ~/simple-todos
+    environment:
+      METEOR_ALLOW_SUPERUSER: true  
+    steps:
+      - checkout
+      - run:
+          name: "install Meteor"
+          command: |  
+            curl https://install.meteor.com | sh
+      - run:
+          name: copy meteor bin to build cache
+          command: |
+            mkdir -p ~/build-temp
+            cp /usr/local/bin/meteor ~/build-temp/meteor-bin
+      - save_cache:
+          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - ~/build-temp      
+      - save_cache:
+          key: v1-meteor-cache
+          paths:
+            - /.meteor/
+      - run:
+          name: "install npm package"
+          command: |
+            npm install
+      - run:
+          name: "listing"
+          command: |
+            ls -a      
+      - save_cache:
+          key: another
+          paths:
+            - ./node_modules/
+      - restore_cache:
+          key: another
+      - restore_cache:
+          key: v1-meteor-cache 
+      - run:
+          name: "test"
+          command: |
+            npm run test
+  deploy:
+    docker:
+      - image: node:12.16.3
+    working_directory: ~/simple-todos
+    environment:
+      METEOR_ALLOW_SUPERUSER: true
+    steps:
+      - checkout
+      - restore_cache:
+          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
+      - run:
+          name: "runcp"
+          command: |
+            cp ~/build-temp/meteor-bin /usr/local/bin/meteor    
+      - restore_cache:
+          key: another
+      - restore_cache:
+          key: mup_cache
+      - run:
+          name: "install mup"
+          command: |
+            npm install --global mup
+      - save_cache:
+          key: mup_cache
+          paths: 
+            - /use/local/bin/mup        
+      - run:
+          name: "deploy"
+          command: |
+            cd .deploy
+            mup setup
+            mup deploy 
+workflows:
+  version: 2.1
+  build-test-deploy:
+    jobs:
+      - build-test
+      - deploy:
+          requires:
+            - build-test
